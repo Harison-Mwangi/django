@@ -8,7 +8,8 @@
     <li>
         <a href="{{ author.get_absolute_url }}">
             {{ author }}
-            <!-- ({{ author.date_of_birth }} - {{ author.date_of_death }}) -->
+            {% if author.date_of_birth != None %}({{ author.date_of_birth }}{% endif %}
+            {% if author.date_of_death != None %}- {{ author.date_of_death }}){% endif %}
         </a>
     </li>
     {% endfor %}
