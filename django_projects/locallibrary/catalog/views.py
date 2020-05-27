@@ -18,6 +18,10 @@ def index(request):
     # Generate counts for genres and books that contain a particular word (case insensitive)
     num_christian_books = Book.objects.filter(genre__name__icontains='Christian').count()
     num_books_with_Holy_in_title = Book.objects.filter(title__icontains='Holy').count()
+
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
     
     context = {
         'num_books': num_books,
@@ -26,6 +30,7 @@ def index(request):
         'num_authors': num_authors,
         'num_christian_books': num_christian_books,
         'num_books_with_Holy_in_title': num_books_with_Holy_in_title,
+        'num_visits': num_visits,
     }
 
     # Render the HTML template index.html with the data in the context variable
