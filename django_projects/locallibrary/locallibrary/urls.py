@@ -19,6 +19,9 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = 'Local Library'
+admin.site.site_title = 'Local Library'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
