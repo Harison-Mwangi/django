@@ -8,7 +8,5 @@ urlpatterns = [
     path('authors/', views.AuthorListView.as_view(), name='authors'),
     # path('author/<int:pk>', views.AuthorDetailView.as_view(), name='author-detail'),
     re_path(r'^author/(?P<pk>\d+)$', views.AuthorDetailView.as_view(), name='author-detail'),
+    path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
 ]
-
-# URL encoding challenge
-# re_path(r'^books/(?P<date>$', views.BookListView.as_view(), name='book-release-date'),
