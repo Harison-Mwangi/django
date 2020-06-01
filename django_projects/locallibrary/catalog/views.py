@@ -81,7 +81,7 @@ class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
     
 
-@permission_required('catalog.can_mark_returned')
+@permission_required('catalog.can_renew')
 def renew_book_librarian(request, pk):
     """View function for renewing a specific BookInstance by librarian."""
     book_instance = get_object_or_404(BookInstance, pk=pk)
