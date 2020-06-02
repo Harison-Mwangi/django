@@ -63,3 +63,19 @@ class GenreModelTest(TestCase):
         genre = Genre.objects.get(id=1)
         max_length = genre._meta.get_field('name').max_length
         self.assertEquals(max_length, 200)
+
+class LanguageModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified objects used by all test methods
+        Language.objects.create(name='English')
+
+    def test_object_name(self):
+        language = Language.objects.get(id=1)
+        expected_object_name = language.name
+        self.assertEquals(expected_object_name, str(language))
+
+    def test_name_max_length(self):
+        language = Language.objects.get(id=1)
+        max_length = language._meta.get_field('name').max_length
+        self.assertEquals(max_length, 200)
