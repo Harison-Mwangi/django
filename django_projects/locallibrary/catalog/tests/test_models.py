@@ -98,3 +98,55 @@ class LanguageModelTest(TestCase):
         language = Language.objects.get(id=1)
         expected_object_name = language.name
         self.assertEquals(expected_object_name, str(language))
+
+class BookModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified objects used by all test methods
+        title = "Automate the Boring Stuff with Python"
+        summary = "Practical Programming for Total Beginners"
+        isbn = "9781593275990"
+        Book.objects.create(title=title, summary=summary, isbn=isbn)
+
+    # labels
+    def test_title_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('title').verbose_name
+        self.assertEquals(field_label, 'title')
+
+    def test_summary_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('summary').verbose_name
+        self.assertEquals(field_label, 'summary')
+
+    def test_isbn_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('isbn').verbose_name
+        self.assertEquals(field_label, 'ISBN')
+
+    # max length
+    def test_title_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('title').max_length
+        self.assertEquals(max_length, 200)
+
+    def test_summary_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('summary').max_length
+        self.assertEquals(max_length, 1000)
+
+    def test_isbn_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('isbn').max_length
+        self.assertEquals(max_length, 13)    
+
+    # custom class methods
+    def test_object_name_is_title(self):
+        book = Book.objects.get(id=1)
+        expected_object_name = book.title
+        self.assertEquals(expected_object_name, str(book))
+
+    def test_get_absolute_url(self):
+        book = Book.objects.get(id=1)
+        # This will also fail if the urlconf is not defined.
+        self.assertEquals(book.get_absolute_url(), '/catalog/book/1')
