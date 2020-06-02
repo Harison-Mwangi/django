@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from catalog.models import Author
+from catalog.models import Author, Genre, Language, Book, BookInstance
 
 class AuthorModelTest(TestCase):
     @classmethod
@@ -47,3 +47,19 @@ class AuthorModelTest(TestCase):
         author = Author.objects.get(id=1)
         # This will also fail if the urlconf is not defined.
         self.assertEquals(author.get_absolute_url(), '/catalog/author/1')
+
+class GenreModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified objects used by all test methods
+        Genre.objects.create(name='Computer Science')
+
+    def test_object_name(self):
+        genre = Genre.objects.get(id=1)
+        expected_object_name = genre.name
+        self.assertEquals(expected_object_name, str(genre))
+
+    def test_name_max_length(self):
+        genre = Genre.objects.get(id=1)
+        max_length = genre._meta.get_field('name').max_length
+        self.assertEquals(max_length, 200)
