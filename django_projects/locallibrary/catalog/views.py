@@ -1,7 +1,7 @@
 from catalog.forms import RenewBookForm
 from catalog.models import Book, Author, BookInstance, Genre, Language
 
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -71,7 +71,7 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
 class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing all books on loan"""
-    permission_required = 'catalog.can_mark_returned'
+    permission_required = 'catalog.can_renew'
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed.html'
     paginate_by = 10
@@ -79,8 +79,8 @@ class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     def get_queryset(self):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
     
-
-@permission_required('catalog.can_renew')
+@login_required
+@permission_required('catalog.can_renew', raise_exception=True)
 def renew_book_librarian(request, pk):
     """View function for renewing a specific BookInstance by librarian."""
     book_instance = get_object_or_404(BookInstance, pk=pk)
