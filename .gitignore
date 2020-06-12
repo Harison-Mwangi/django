@@ -357,3 +357,6 @@ env/
 
 # SQLite database
 *.sqlite3
+
+# coverage test results
+htmlcov/
