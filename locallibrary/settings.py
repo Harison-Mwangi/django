@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os, django_heroku
+import os, dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -138,5 +138,6 @@ LOGIN_REDIRECT_URL = '/'
 # It logs any emails sent to the console so you can copy the password reset link from the console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
