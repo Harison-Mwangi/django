@@ -3,7 +3,7 @@ A catalog application suitable for use by a small library.
 
 _Credits:_ [MDN Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
 
-![CI](https://github.com/harisonmg/local-library/workflows/Continuous%20Integration/badge.svg)
+[![Continuous Integration](https://github.com/harisonmg/local-library/actions/workflows/ci.yml/badge.svg)](https://github.com/harisonmg/local-library/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/harisonmg/local-library/badge.svg?branch=master)](https://coveralls.io/github/harisonmg/local-library?branch=master)
 
 ## Required Software
