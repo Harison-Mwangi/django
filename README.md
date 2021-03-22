@@ -17,6 +17,7 @@ _Credits:_ [MDN Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn
 1. Create and activate a virtual environment using `pipenv`
    by running `$ pipenv shell`
 1. Install dev dependencies by running `$ pipenv install --dev`
+1. Generate compressed static files using `$ python manage.py collectstatic`
 1. Run the tests using `$ python manage.py test`
 1. Run the database migrations using `$ python manage.py migrate`
 1. Create a superuser using `$ python manage.py createsuperuser`

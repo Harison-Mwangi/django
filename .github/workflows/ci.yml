@@ -29,6 +29,7 @@ jobs:
 
     - name: Run Tests
       run: |
+        pipenv run python manage.py collectstatic
         pipenv run coverage run manage.py test
 
     - name: Submit test coverage data to coverage.io
