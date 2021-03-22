@@ -9,9 +9,9 @@ dj-database-url = "*"
 gunicorn = "*"
 psycopg2 = "*"
 whitenoise = "*"
-coveralls = "*"
 
 [dev-packages]
 coverage = "*"
+coveralls = "*"
 
 [requires]
