@@ -1,16 +1,24 @@
 # Local Library
-A project from MDN django tutorials, although with some minor edits.
+A catalog application suitable for use by a small library.
 
-![Django CI](https://github.com/Harison-Mwangi/learn-django/workflows/Django%20CI/badge.svg)
+_Credits:_ [MDN Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
 
-## Instructions
+![CI](https://github.com/harisonmg/local-library/workflows/Continuous%20Integration/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/harisonmg/local-library/badge.svg?branch=master)](https://coveralls.io/github/harisonmg/local-library?branch=master)
 
-> 1. Create and activate a **virtual environment** using [```venv```](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) or [```virtualenvwrapper```](https://virtualenvwrapper.readthedocs.io/en/latest/)
-> 2. Install the dependencies using ```pip install -r requirements.txt```
-> 3.  Make and run migrations using ```python manage.py makemigrations``` and ```python manage.py migrate``` respectively.
-> 4. Use ```python manage.py runserver``` to run the development server.
+## Required Software
+- [Python](https://www.python.org/downloads) 3.6 or greater
+- [Pipenv](https://pipenv.pypa.io/en/latest/#install-pipenv-today)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- A modern web browser
 
-### Note
-> - Use ```coverage run manage.py test``` or ```python manage.py test``` to run the tests
->- Use ```coverage report``` to see [_coverage.py_](https://coverage.readthedocs.io/en/latest/)'s test results in the command line
-> - Use ```coverage html``` to generate HTML for _coverage.py_'s  test results. Go to ```<the repository root>/htmlcov/index.html``` to see the results.
+## Local Setup
+1. Clone the repository
+1. Create and activate a virtual environment using `pipenv`
+   by running `$ pipenv shell`
+1. Install dev dependencies by running `$ pipenv install --dev`
+1. Run the tests using `$ python manage.py test`
+1. Run the database migrations using `$ python manage.py migrate`
+1. Create a superuser using `$ python manage.py createsuperuser`
+1. Use `$ python manage.py runserver` to run the development server
+1. Visit [`localhost:8000`](http://localhost:8000) in your browser
