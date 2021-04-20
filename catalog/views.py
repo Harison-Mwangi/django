@@ -1,15 +1,17 @@
-from catalog.forms import RenewBookForm
-from catalog.models import Book, Author, BookInstance, Genre, Language
+import datetime
 
-from django.contrib.auth.decorators import permission_required, login_required
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse, reverse_lazy
 from django.views import generic
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-import datetime
+from catalog.forms import RenewBookForm
+from catalog.models import Author, Book, BookInstance, Genre, Language
+
 
 def index(request):
     """View function for home page of site."""

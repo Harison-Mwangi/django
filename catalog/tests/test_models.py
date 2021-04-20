@@ -1,6 +1,7 @@
 from django.test import TestCase
 
-from catalog.models import Author, Genre, Language, Book, BookInstance
+from catalog.models import Author, Book, BookInstance, Genre, Language
+
 
 class AuthorModelTest(TestCase):
     @classmethod
