@@ -1,13 +1,15 @@
-from catalog.models import Author, BookInstance, Book, Genre, Language
+import datetime
+import uuid
 
 # User - Required to assign User as a borrower
 # Permission - Required to grant the permission needed to set a book as returned.
-from django.contrib.auth.models import User, Permission
+from django.contrib.auth.models import Permission, User
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
 
-import datetime, uuid
+from catalog.models import Author, Book, BookInstance, Genre, Language
+
 
 class AuthorListViewTest(TestCase):
     @classmethod
